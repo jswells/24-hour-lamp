@@ -13,7 +13,7 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIX, PIN, NEO_GRB + NEO_KHZ800);
 
 
 // R, G, B, brightness, hours, minutes
-unsigned int colors[][5] = {
+unsigned int colors[][6] = {
   {255, 0, 0, 25, 0, 0},
   {255, 0, 0, 15, 3, 0},
   {255, 0, 0, 25, 5, 0},
@@ -32,11 +32,11 @@ unsigned int colors[][5] = {
   {0, 0,116, 255, 18, 0},
   {0, 90, 0, 255, 19, 0},
   {65, 0, 0, 255, 20, 0},
-  {0, 50, 0, 255, 21, 0},
+  {0, 255, 0, 50, 21, 0},
   {37, 0, 0, 255, 22, 0},
   {0, 25, 0, 255, 23, 0},
-  {255, 0, 0, 25, 24, 0}, //Make sure this is the same as the first line, becauze lazy
-}
+  {255, 0, 0, 25, 24, 0} //Make sure this is the same as the first line, becauze lazy
+};
 
 
 void setup() {
@@ -51,29 +51,40 @@ void setup() {
 
 
 void loop() {
-  for(int i=0; i<size(colors)-1; i++){
-    unsigned int color_hour1 = colors[i][4];
-    unsigned int color_min1 = colors[i][5];
-    unsigned int color_hour2 = colors[i+1][4];
-    unsigned int color_min2 = colors[i+1][5];
-    if(hour() <= color_hour){
+   unsigned int color_hour1 ;
+   unsigned int color_min1  ;
+   unsigned int color_hour2  ;
+   unsigned int color_min2 ;
+   unsigned int r1;
+   unsigned int r2;
+   unsigned int g1;
+   unsigned int g2;
+   unsigned int b1;
+   unsigned int b2;
+  
+  for(int i=0; i<sizeof(colors)-1; i++){
+    color_hour1 = colors[i][4];
+    color_min1 = colors[i][5];
+    color_hour2 = colors[i+1][4];
+    color_min2 = colors[i+1][5];
+    if(hour() <= color_hour1){
       unsigned int k1 = colors[i][3];
-      unsigned int r1 = colors[i][0] * k1 / 255;
-      unsigned int g1 = colors[i][1] * k1 / 255;
-      unsigned int b1 = colors[i][2] * k1 / 255;
+      r1 = colors[i][0] * k1 / 255;
+      g1 = colors[i][1] * k1 / 255;
+      b1 = colors[i][2] * k1 / 255;
       unsigned int k2 = colors[i+1][3];
-      unsigned int r2 = colors[i+1][0] * k2 / 255;
-      unsigned int g2 = colors[i+1][1] * k2 / 255;
-      unsigned int b2 = colors[i+1][2] * k2 / 255;
+      r2 = colors[i+1][0] * k2 / 255;
+      g2 = colors[i+1][1] * k2 / 255;
+      b2 = colors[i+1][2] * k2 / 255;
       break;
     }
   }
-  unsigned int timespan = (color_hour2 - color_hour1) * 60 + (color_min2 - color_min1)
-  unsigned int elapsed_time = (hour() - color_hour1) * 60 + (minute() - color_min1)
+  unsigned int timespan = (color_hour2 - color_hour1) * 60 + (color_min2 - color_min1);
+  unsigned int elapsed_time = (hour() - color_hour1) * 60 + (minute() - color_min1);
   unsigned int rout = map(elapsed_time, 0, timespan, r1, r2);
   unsigned int gout = map(elapsed_time, 0, timespan, g1, g2);
   unsigned int bout = map(elapsed_time, 0, timespan, b1, b2);
-  solidColor(strip.color(rout, gout, bout));
+  solidColor(strip.Color(rout, gout, bout));
   strip.show();
 }
 
