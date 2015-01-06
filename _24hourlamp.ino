@@ -15,6 +15,7 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIX, PIN, NEO_GRB + NEO_KHZ800);
 // R, G, B, brightness, hours, minutes
 unsigned int colors[][6] = {
   {255, 0, 0, 25, 0, 0},
+<<<<<<< HEAD:_24hourlamp/_24hourlamp.ino
 <<<<<<< HEAD:_24hourlamp.ino
   {255, 0, 0, 22, 1, 0},
   {255, 0, 0, 18, 2, 0},
@@ -22,12 +23,13 @@ unsigned int colors[][6] = {
   {255, 0, 0, 25, 1, 0},
   {255, 0, 0, 25, 2, 0},
 >>>>>>> origin/master:_24hourlamp/_24hourlamp.ino
+=======
+>>>>>>> parent of 9824d8b... added hours to complete define all 24 hours.:_24hourlamp.ino
   {255, 0, 0, 15, 3, 0},
-  {255, 0, 0, 15, 4, 0},
   {255, 0, 0, 25, 5, 0},
   {0, 0, 255, 25, 6, 0},
-  {255, 0, 255, 205, 7, 0},
-  {255, 255, 0, 179, 8, 0},
+  {0, 255, 0, 205, 7, 0},
+  {255, 0, 255, 179, 8, 0},
   {127, 255, 0, 160, 9, 0},
   {0, 0, 255, 150, 10, 0},
   {0, 255, 0, 125, 11, 0},
