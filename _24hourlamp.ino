@@ -15,6 +15,8 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIX, PIN, NEO_GRB + NEO_KHZ800);
 // R, G, B, brightness, hours, minutes
 unsigned int colors[][6] = {
   {255, 0, 0, 25, 0, 0},
+  {255, 0, 0, 22, 1, 0},
+  {255, 0, 0, 18, 2, 0},
   {255, 0, 0, 15, 3, 0},
   {255, 0, 0, 25, 5, 0},
   {0, 0, 255, 25, 6, 0},
