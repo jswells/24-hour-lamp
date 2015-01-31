@@ -3,7 +3,7 @@
 #include <Time.h>         //http://www.arduino.cc/playground/Code/Time
 #include <Wire.h>
 #define PIN 6
-#define NUMPIX 61
+#define NUMPIX 60
 
 
 // Parameter 1 = number of pixels in strip
@@ -14,39 +14,39 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIX, PIN, NEO_GRB + NEO_KHZ800);
 
 // R, G, B, brightness, hours, minutes
 unsigned int colors[][6] = {
-  {255, 0, 0, 25, 0, 0},
-  {255, 0, 0, 22, 1, 0},
+  {255, 0, 0, 20, 0, 0},
+  {255, 0, 0, 18, 1, 0},
   {255, 0, 0, 18, 2, 0},
   {255, 0, 0, 15, 3, 0},
   {255, 0, 0, 15, 4, 0},
-  {255, 192, 203, 25, 5, 0},
-  {64, 0, 255, 25, 6, 0},
-  {255, 255, 0, 105, 7, 0},
-  {255, 0, 255, 205, 8, 0},
-  {127, 255, 0, 160, 9, 0},
-  {0, 0, 255, 150, 10, 0},
+  {255, 0, 0, 25, 5, 0},
+  {255, 78, 0, 25, 6, 0},
+  {255, 128, 0, 105, 7, 0},
+  {255, 255, 0, 225, 8, 0},
+  {255, 255, 255, 160, 9, 0},
+  {0, 255, 255, 150, 10, 0},
   {0, 255, 0, 125, 11, 0},
-  {255, 0, 0, 105, 12, 0},
+  {0, 0, 255, 105, 12, 0},
   {0, 255, 0, 91, 13, 0},
-  {0, 0, 255, 83, 14, 0},
-  {0, 255, 0, 82, 15, 0},
-  {255, 0, 0, 81, 16, 0},
-  {0, 255, 0, 97, 17, 0},
+  {255, 255, 0, 83, 14, 0},
+  {255, 128, 0, 82, 15, 0},
+  {128, 0, 255, 81, 16, 0},
+  {255, 0, 255, 97, 17, 0},
   {0, 0, 255, 116, 18, 0},
-  {0, 255, 0, 90, 19, 0},
-  {255, 0, 127, 65, 20, 0},
-  {0, 255, 0, 50, 21, 0},
-  {255, 127, 0, 35, 22, 0},
-  {127, 255, 0, 23, 23, 0},
-  {255, 0, 0, 25, 24, 0} //Make sure this is the same as the first line, becauze lazy
+  {255, 0, 255, 90, 19, 0},
+  {255, 128, 0, 65, 20, 0},
+  {255, 255, 0, 50, 21, 0},
+  {255, 128, 0, 35, 22, 0},
+  {255, 255, 0, 23, 23, 0},
+  {255, 0, 0, 25, 20, 0} //Make sure this is the same as the first line, becauze lazy
 };
 
 
 void setup() {
-  pinMode(A2, OUTPUT);
-  pinMode(A3, OUTPUT);
-  digitalWrite(A2, LOW);
-  digitalWrite(A3, HIGH);
+ // pinMode(A2, OUTPUT); //add these 4 lines back in for plugging 
+ // pinMode(A3, OUTPUT); //the RTC directly into the Arduino Uno R3
+ // digitalWrite(A2, LOW);
+ // digitalWrite(A3, HIGH);
   setSyncProvider(RTC.get);
   strip.begin();
   strip.show(); // Initialize all pixels to 'off'
